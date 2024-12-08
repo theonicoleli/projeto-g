@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EBAAAAA 😁</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" 
+      rel="stylesheet" 
+    />
+    <link rel="stylesheet" href="css/formulario.css">
+
+    <style>
+        .error-message {
+            display: none;
+            background-color: #ffe6e6;
+            border: 1px solid #ff9999;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #b30000;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>EBAAAAA 😁</h2>
+        <div class="progress-bar">
+            <div class="progress-indicator">Etapa <span id="current-step">1</span> de 6</div>
+        </div>
+        
+        <div id="error-message" class="error-message">
+            <span class="close-btn" id="close-error-btn">×</span>
+            <span id="error-text"></span>
+        </div>
+
+        <form action="https://formsubmit.co/theonicoleli@gmail.com" method="POST">
+            <input type="hidden" name="_next" value="http://127.0.0.1:5500/retorno.html">
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="form-step active">
+                <label>Queria poder sair para te conhecer melhor e para termos um tempo juntossss, OBRIGADOOOO POR ACEITARRRR 🤍</label>
+                <div class="buttons">
+                    <span></span>
+                    <button type="button" data-action="next">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-step">
+                <label>Dicasss, quando escolher uma opção selecionável, ela foi criada para dar opções apenas para as seleções que correspondem a ela, então qualquer coisa volta e da uma olhadaaa 😉</label>
+                <div class="buttons">
+                    <button type="button" data-action="prev">Voltar</button>
+                    <button type="button" data-action="next">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-step">
+                <label>Consegue este fim de semanaa? Se não, fale um dia que você podee!!</label>
+                <input type="text" name="dia" placeholder="Digite sua resposta" autocomplete="off" required>
+                <div class="buttons">
+                    <button type="button" data-action="prev">Voltar</button>
+                    <button type="button" data-action="next">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-step">
+                <label>Que horário fica bom para vocêê??</label>
+                <input type="text" name="horario" placeholder="Digite sua resposta" autocomplete="off" required>
+                <div class="buttons">
+                    <button type="button" data-action="prev">Voltar</button>
+                    <button type="button" data-action="next">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-step">
+                <label>Qual tipo de comida você quer?</label>
+                <div class="options-group">
+                    <label><input type="radio" name="tipoComida" value="hamburguer" required> Hambúrguer</label>
+                    <label><input type="radio" name="tipoComida" value="pizza" required> Pizza</label>
+                    <label><input type="radio" name="tipoComida" value="churrascaria" required> Churrascaria</label>
+                    <label><input type="radio" name="tipoComida" value="cafeteria" required> Cafeteria</label>
+                    <label><input type="radio" name="tipoComida" value="classicos" required> Clássicos</label>
+                </div>
+                <div class="buttons">
+                    <button type="button" data-action="prev">Voltar</button>
+                    <button type="button" data-action="next">Próximo</button>
+                </div>
+            </div>
+
+            <div class="form-step" id="step-local">
+                <label>Escolha o local:</label>
+                <div class="options-group" id="opcoes-local"></div>
+                <div class="buttons">
+                    <button type="button" data-action="prev">Voltar</button>
+                    <button type="submit" data-button>Enviar</button>
+                </div>
+            </div>
+
+        </form>
+    </section>
+
+    <div id="emoji-explosion" style="position: fixed; width: 100%; height: 100%; pointer-events: none; top: 0; left: 0; z-index: 999;"></div>
+
+    <script>
+        document.querySelector('button[type="submit"]').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const emojiContainer = document.getElementById('emoji-explosion');
+            emojiContainer.innerHTML = ''; 
+            for (let i = 0; i < 50; i++) { 
+                const emoji = document.createElement('div');
+                emoji.textContent = '🎉';
+                emoji.style.position = 'absolute';
+                emoji.style.fontSize = `${Math.random() * 24 + 16}px`;
+                emoji.style.left = `${Math.random() * 100}vw`;
+                emoji.style.top = `${Math.random() * 100}vh`;
+                emoji.style.animation = `explode 1.5s ease-out`;
+                emoji.style.opacity = 0;
+                emojiContainer.appendChild(emoji);
+            }
+
+            setTimeout(() => {
+                document.querySelector('form').submit();
+            }, 2000);
+        });
+    </script>
+
+    <script>
+        const steps = Array.from(document.querySelectorAll('.form-step'));
+        const nextBtns = document.querySelectorAll('button[data-action="next"]');
+        const prevBtns = document.querySelectorAll('button[data-action="prev"]');
+        const currentStepEl = document.getElementById('current-step');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const closeErrorBtn = document.getElementById('close-error-btn');
+
+        let currentStep = 0;
+
+        const locaisPorTipo = {
+            'hamburguer': ['Outback 🍔','Fábrica Gourmet 🍔','Hard Rock Café 🍔'],
+            'pizza': ['Park da Pizza 🍕','Mercearia anos 30 🍕','Dom Giovanni 🍕'],
+            'churrascaria': ['Batel Grill 🍖','Sal e Brasa 🍖','Recanto Gaúcho 🍖'],
+            'cafeteria': ['Flor de laranjeira ☕', 'Chez Margot Bistrot ☕', 'Pantucci ☕'],
+            'classicos': ['Madalosso 🏛','Terrazza 40 🏛','Outros (Mando no Whatss)']
+        };
+
+        function changeStep(direction) {
+            steps[currentStep].classList.remove('active');
+
+            if (direction === 'next') {
+                currentStep++;
+            } else if (direction === 'prev') {
+                currentStep--;
+            }
+
+            steps[currentStep].classList.add('active');
+            updateProgressIndicator();
+
+            if (steps[currentStep].id === 'step-local') {
+                updateLocalOptions();
+            }
+        }
+
+        function updateProgressIndicator() {
+            currentStepEl.textContent = currentStep + 1;
+        }
+
+        function updateLocalOptions() {
+            const tipoSelecionado = document.querySelector('input[name="tipoComida"]:checked');
+            const opcoesLocal = document.getElementById('opcoes-local');
+            opcoesLocal.innerHTML = '';
+
+            if (tipoSelecionado && locaisPorTipo[tipoSelecionado.value]) {
+                locaisPorTipo[tipoSelecionado.value].forEach(local => {
+                    const label = document.createElement('label');
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = 'localEscolhido';
+                    input.value = local;
+                    input.required = true;
+
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(' ' + local));
+                    opcoesLocal.appendChild(label);
+                    opcoesLocal.appendChild(document.createElement('br'));
+                });
+            }
+        }
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                hideErrorMessage();
+
+                const activeStep = steps[currentStep];
+                const requiredFields = activeStep.querySelectorAll('input[required]');
+                let allFilled = true;
+
+                requiredFields.forEach(field => {
+                    if (field.type === 'text' && field.value.trim() === '') {
+                        allFilled = false;
+                    } else if (field.type === 'radio') {
+                        const group = activeStep.querySelectorAll(`input[name="${field.name}"]`);
+                        const checked = Array.from(group).some(radio => radio.checked);
+                        if (!checked) {
+                            allFilled = false;
+                        }
+                    }
+                });
+
+                if (allFilled) {
+                    changeStep('next');
+                } else {
+                    showErrorMessage('Por favor, preencha todos os campos obrigatórios antes de continuar.');
+                }
+            });
+        });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                hideErrorMessage(); 
+                changeStep('prev');
+            });
+        });
+
+        closeErrorBtn.addEventListener('click', hideErrorMessage);
+
+        function showErrorMessage(message) {
+            errorText.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+
+        function hideErrorMessage() {
+            errorMessage.style.display = 'none';
+            errorText.textContent = '';
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; 
+  font-family: 'Poppins', sans-serif;
+  background-size: cover;
+}
+
+#content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#content h1 {
+  margin-top: 20px;
+  color: #000;
+  font-weight: bold;
+}
+
+.pace {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  z-index: 2000;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transform: translateY(0);
+  transition: transform 1s ease;
+}
+
+.pace.hide-up {
+  transform: translateY(-100%);
+}
+
+.pace .pace-activity {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #fff;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pace-message {
+    font-size: 28px;
+}
+
+button {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    font-family: Arial, sans-serif;
+}
+
+.sim {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.sim:hover {
+    background-color: #43a047;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}   
+
+.sim a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nao {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.nao:hover {
+    background-color: #e53935;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+button:focus {
+    outline: 2px solid #333;
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    #content h1 {
+        font-size: 28px;
+    }
+
+    body, html {
+      background: url("../images/landing-image-mobile.png") no-repeat center center fixed;
+    }
+
+    #content {
+      background: rgba(255, 255, 255, 0.7);
+    }
+}

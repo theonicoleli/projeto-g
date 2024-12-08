@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Quer sair comigo 🥺</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script>
+    <script src="script/script.js"></script>
+</head>
+<body>
+
+  <div id="content">
+    <h1>Quer sair comigo?? 🥺</h1>
+
+    <div class="button-options">
+        <button class="sim" onclick="window.location.href='formulario.html'">
+            Sim
+        </button>
+    
+        <button class="nao" onmouseover="desvia()">
+            Não
+        </button>
+    </div>
+  </div>
+
+  <script>
+    Pace.on("start", function() {
+      const paceEl = document.querySelector(".pace");
+      if (paceEl) {
+        const messageEl = document.createElement("div");
+        messageEl.classList.add("pace-message");
+        messageEl.textContent = "Oii Gabriela 🤍";
+        paceEl.appendChild(messageEl);
+      }
+    });
+
+    Pace.on("done", function() {
+      document.getElementById("content").style.display = "flex";
+      document.documentElement.style.overflow = "auto";
+
+      setTimeout(() => {
+        const paceEl = document.querySelector(".pace");
+        if (paceEl) {
+          paceEl.classList.add("hide-up");
+          paceEl.addEventListener('transitionend', () => {
+            paceEl.remove();
+          });
+        }
+      }, 5000);
+    });
+  </script>
+
+</body>
+</html>
